@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+
+    // Mesmo alias do vite.config.ts — sem ele o TypeScript não segue os `@/…`.
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"] },
+
+    // O main.tsx importa com extensão .tsx explícita, que o Vite resolve.
+    "allowImportingTsExtensions": true,
+
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // Só verificação de tipos: quem emite é o Vite.
+    "noEmit": true,
+    // O código de terceiros não é nosso para corrigir, e verificá-lo enterrava
+    // os erros reais em ruído.
+    "skipLibCheck": true,
+
+    // `strict` fica desligado por agora: este código nunca passou por um
+    // verificador de tipos, e ligá-lo de uma vez daria centenas de erros
+    // pré-existentes que afogariam os novos. O objetivo aqui é apanhar a classe
+    // de erro que já chegou à aplicação empacotada — nomes inexistentes,
+    // argumentos trocados, propriedades que não existem.
+    "strict": false,
+    "noImplicitAny": false
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    // Código colado, sem nenhum import a apontar-lhe, e que depende de
+    // `react-router-dom` — que o projeto não usa nem tem instalado. Excluído em
+    // vez de apagado: é anterior a este trabalho, e apagá-lo é decisão do dono.
+    "src/imports/pasted_text"
+  ]
+}

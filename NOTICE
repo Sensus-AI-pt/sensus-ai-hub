@@ -1,0 +1,21 @@
+Sensus AI Hub
+Copyright 2026 The Sensus AI Authors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository includes third-party software under its own license:
+
+- rPPG-Toolbox — Codigo/motor/unsupervised_methods
+  Responsible AI License (RAIL) v1.1, see Codigo/motor/LICENSE.
+  The use restrictions of that license apply to that code.
+  https://github.com/ubicomplab/rPPG-Toolbox
+
+- StreamDiffusion — Codigo/motor/vendor/streamdiffusion_src
+  Apache License 2.0.
+  https://github.com/cumulo-autumn/StreamDiffusion
+
+- shadcn/ui components — Codigo/interface
+  MIT License, see Codigo/interface/ATTRIBUTIONS.md.
+
+The name "Sensus AI" and its logo are not licensed under the Apache License
+(section 6 of the License).

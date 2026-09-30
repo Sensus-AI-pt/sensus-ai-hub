@@ -1,0 +1,52 @@
+{
+  "senVersion": 1,
+  "id": "fluid-ai",
+  "name": "Fluid AI",
+  "description": "Simulação de fluidos incompressíveis na GPU, pintada com o rato ou o toque, reinterpretada em tempo real pelo StreamDiffusion. Seis presets mudam ao mesmo tempo a física do fluido e o estilo visual.",
+  "thumbnail": "fluidai",
+  "engine": {
+    "streamdiffusion": {
+      "enabled": true,
+      "basePrompt": "cyberpunk neon city, futuristic surveillance HUD overlay, glowing blue and magenta lights, rain-slicked pavement, high tech simulation, 8k, detailed",
+      "negativePrompt": "blurry, low quality, watermark, text"
+    },
+    "depthMap": {
+      "enabled": false
+    },
+    "faceTracking": {
+      "enabled": false
+    },
+    "fluid": {
+      "enabled": true
+    }
+  },
+  "defaults": {
+    "cfg": 1.2,
+    "denoising": 0.65,
+    "steps": 2,
+    "seed": 2252004,
+    "activeSensors": {
+      "rppg": false,
+      "gaze": false,
+      "blink": false,
+      "symmetry": false,
+      "flow": true,
+      "presence": false,
+      "gesture": false
+    },
+    "music": {
+      "layers": {
+        "melodia": 0,
+        "piano": 0,
+        "coro": 0,
+        "tabla": 0,
+        "percussao": 0
+      }
+    }
+  },
+  "graph": {
+    "nodes": [],
+    "connections": []
+  },
+  "available": true
+}

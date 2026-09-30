@@ -1,0 +1,32 @@
+# Dependências e builds
+node_modules/
+Codigo/interface/dist/
+Codigo/hub/dist/
+
+# A interface compilada copia-se para o hub (ver README)
+Codigo/hub/index.html
+Codigo/hub/assets/
+
+# Ambiente Python, modelos, motores TensorRT e binários do motor
+Codigo/motor/rppg_env/
+Codigo/motor/hf_cache/
+Codigo/motor/engines/
+Codigo/motor/adb/
+__pycache__/
+*.pyc
+*.pth
+*.onnx
+*.engine
+*.trt
+
+# A aplicação empacotada e o atalho que o PREPARAR cria
+Sensus AI Hub/Aplicacao/
+Sensus AI Hub/*.lnk
+
+# Fontes comerciais da marca: não se redistribuem
+Codigo/interface/src/assets/fonts/
+
+# Saídas de execução e configuração local
+Codigo/motor/temp_voice_*.wav
+sensus_live_data.csv
+.env

@@ -1,0 +1,119 @@
+{
+  "senVersion": 1,
+  "id": "exp1-depth-explorer",
+  "name": "Depth Map Tools",
+  "description": "Ferramentas de brincar com o mapa de profundidade e a nuvem de pontos gerados em tempo real pela câmara — 6 técnicas de visualização 3D interativas, sem StreamDiffusion.",
+  "thumbnail": "depthtools",
+  "engine": {
+    "streamdiffusion": {
+      "enabled": false,
+      "basePrompt": "",
+      "negativePrompt": ""
+    },
+    "depthMap": {
+      "enabled": true
+    }
+  },
+  "defaults": {
+    "cfg": 1.0,
+    "denoising": 0.65,
+    "steps": 1,
+    "seed": 2252004,
+    "activeSensors": {
+      "rppg": false,
+      "gaze": false,
+      "blink": false,
+      "symmetry": false,
+      "flow": false,
+      "presence": false,
+      "gesture": false
+    },
+    "music": {
+      "layers": {
+        "melodia": 0,
+        "piano": 0,
+        "coro": 0,
+        "tabla": 0,
+        "percussao": 0
+      }
+    },
+    "depthViz": {
+      "technique": "point_cloud",
+      "colorMode": "Tint",
+      "baseColor": "#00f0ff",
+      "amplitude": 3.0,
+      "contrast": 1.5,
+      "threshold": 0.05,
+      "pointSize": 3.0,
+      "resolution": 256,
+      "waveSize": 0.0,
+      "waveSpeed": 1.0,
+      "glow": 0.8,
+      "slices": 0
+    }
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "dist",
+        "type": "sensor",
+        "params": {
+          "field": "dist_cm"
+        },
+        "pos": [
+          40,
+          80
+        ]
+      },
+      {
+        "id": "dist_para_amplitude",
+        "type": "map_range",
+        "params": {
+          "inMin": 40,
+          "inMax": 120,
+          "outMin": 6,
+          "outMax": 1
+        },
+        "pos": [
+          280,
+          80
+        ]
+      },
+      {
+        "id": "viz",
+        "type": "depth_viz_output",
+        "params": {
+          "technique": "point_cloud",
+          "colorMode": "Tint"
+        },
+        "pos": [
+          560,
+          80
+        ]
+      }
+    ],
+    "connections": [
+      {
+        "from": [
+          "dist",
+          "out"
+        ],
+        "to": [
+          "dist_para_amplitude",
+          "in"
+        ]
+      },
+      {
+        "from": [
+          "dist_para_amplitude",
+          "out"
+        ],
+        "to": [
+          "viz",
+          "amplitude"
+        ]
+      }
+    ]
+  },
+  "available": true
+}

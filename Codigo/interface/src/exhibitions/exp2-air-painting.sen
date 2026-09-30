@@ -1,0 +1,49 @@
+{
+  "senVersion": 1,
+  "id": "air-painting",
+  "name": "Air Painting",
+  "description": "Pintar no ar com a ponta do indicador. A profundidade da mão é o pincel: estender o braço na direção da câmara pinta, recolher levanta o traço. Sem sensores biométricos nem geração musical.",
+  "thumbnail": "airpainting",
+  "engine": {
+    "streamdiffusion": {
+      "enabled": false,
+      "basePrompt": "",
+      "negativePrompt": ""
+    },
+    "depthMap": {
+      "enabled": true
+    },
+    "airPainting": {
+      "enabled": true
+    }
+  },
+  "defaults": {
+    "cfg": 1.0,
+    "denoising": 0.65,
+    "steps": 1,
+    "seed": 2252004,
+    "activeSensors": {
+      "rppg": false,
+      "gaze": false,
+      "blink": false,
+      "symmetry": false,
+      "flow": false,
+      "presence": false,
+      "gesture": false
+    },
+    "music": {
+      "layers": {
+        "melodia": 0,
+        "piano": 0,
+        "coro": 0,
+        "tabla": 0,
+        "percussao": 0
+      }
+    }
+  },
+  "graph": {
+    "nodes": [],
+    "connections": []
+  },
+  "available": true
+}

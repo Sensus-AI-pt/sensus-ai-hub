@@ -1,0 +1,55 @@
+{
+  "senVersion": 1,
+  "id": "regulacao-sensorial",
+  "name": "Regulação Sensorial",
+  "description": "Ambiente base de regulação emocional por biofeedback.",
+  "thumbnail": "regulacao",
+  "engine": {
+    "streamdiffusion": {
+      "enabled": true,
+      "basePrompt": "blue rose in a purple room",
+      "negativePrompt": "",
+      "quadrantPrompts": {
+        "calmo_positivo": "Crisp geometric light rays refracting through clear cyan water, sharp refreshing details, gentle energetic ripples, high contrast, crisp focus, 4k hdr",
+        "calmo_negativo": "Vibrant golden morning sunbeams filtering through a blooming spring forest, subtle dynamic wind, warm yellow and orange tones, uplifting, glowing, 4k hdr",
+        "ativado_positivo": "Symmetrical zen stones resting on perfectly still water, grounded earthy tones, perfect balance, steady composition, soft focus, grounding, 4k hdr",
+        "ativado_negativo": "Soft blue watercolor waves, smooth continuous curves, slow flowing motion, ethereal ambient light, minimalist, soothing atmosphere, 4k hdr"
+      }
+    },
+    "depthMap": {
+      "enabled": false
+    },
+    "saudacao": {
+      "enabled": true
+    }
+  },
+  "defaults": {
+    "cfg": 1.0,
+    "denoising": 0.95,
+    "steps": 1,
+    "seed": 2252004,
+    "activeSensors": {
+      "rppg": true,
+      "gaze": true,
+      "blink": true,
+      "symmetry": true,
+      "flow": true,
+      "presence": true,
+      "gesture": false
+    },
+    "music": {
+      "layers": {
+        "melodia": 0.85,
+        "piano": 0.7,
+        "coro": 0.55,
+        "tabla": 0.5,
+        "percussao": 0.45
+      }
+    }
+  },
+  "graph": {
+    "nodes": [],
+    "connections": []
+  },
+  "available": true
+}

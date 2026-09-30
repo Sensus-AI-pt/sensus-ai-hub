@@ -1,0 +1,46 @@
+{
+  "senVersion": 1,
+  "id": "exp2",
+  "name": "Ambiente 5",
+  "description": "Espaço reservado para um ambiente futuro. Ainda não disponível.",
+  "thumbnail": "",
+  "engine": {
+    "streamdiffusion": {
+      "enabled": true,
+      "basePrompt": "placeholder — a definir",
+      "negativePrompt": ""
+    },
+    "depthMap": {
+      "enabled": false
+    }
+  },
+  "defaults": {
+    "cfg": 1.0,
+    "denoising": 0.65,
+    "steps": 1,
+    "seed": 2252004,
+    "activeSensors": {
+      "rppg": true,
+      "gaze": true,
+      "blink": true,
+      "symmetry": true,
+      "flow": true,
+      "presence": true,
+      "gesture": false
+    },
+    "music": {
+      "layers": {
+        "melodia": 0.85,
+        "piano": 0.7,
+        "coro": 0.55,
+        "tabla": 0.5,
+        "percussao": 0.45
+      }
+    }
+  },
+  "graph": {
+    "nodes": [],
+    "connections": []
+  },
+  "available": false
+}

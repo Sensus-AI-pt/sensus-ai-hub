@@ -1,0 +1,76 @@
+
+model_id: "stabilityai/sd-turbo"
+
+# Core StreamDiffusion parameters
+t_index_list: [1]
+width: 512
+height: 512
+device: "cuda"
+dtype: "float16"
+
+# Generation parameters (defaults, can be updated via OSC)
+guidance_scale: 1.0
+num_inference_steps: 50
+seed: 1653115
+delta: 1.0
+
+# Prompt configuration (supports both single and blending)
+prompt: "picasso painting"
+negative_prompt: ""
+
+# Optimization settings
+mode: "img2img"  # Always use img2img engines (mode switching handled at runtime)
+frame_buffer_size: 1
+use_denoising_batch: true
+use_tiny_vae: true
+acceleration: "tensorrt"
+cfg_type: "self"
+do_add_noise: false
+warmup: 10
+use_safety_checker: false
+skip_diffusion: false
+compile_engines_only: false
+build_engines_if_missing: true
+
+# Scheduler and sampler (TCD/StreamV2V support)
+scheduler: "lcm"
+sampler: "normal"
+
+# StreamV2V Cached Attention (Cattenable enables, Cattmaxframes/Cattinterval tune)
+use_cached_attn: false
+cache_maxframes: 1
+cache_interval: 1
+
+# Image filtering (similar frame skip)
+enable_similar_image_filter: false
+similar_image_filter_threshold: 0.99
+similar_image_filter_max_skip_frame: 1
+
+# HuggingFace cache directory (for model downloads)
+hf_cache: ""
+
+# TensorRT engine directory
+engine_dir: ""
+
+# ControlNet configuration (disabled)
+use_controlnet: false
+
+# IPAdapter configuration (disabled)
+use_ipadapter: false
+
+
+
+
+
+# TouchDesigner specific settings
+td_settings:
+  # OSC communication
+  osc_receive_port: 8574
+  osc_transmit_port: 8583
+  
+  # Memory interface
+  input_mem_name: 'StreamDiffusionTD1_512-512'
+  output_mem_name: 'StreamDiffusionTD1_512-512_out'
+  
+  # Debug settings
+  debug_mode: true

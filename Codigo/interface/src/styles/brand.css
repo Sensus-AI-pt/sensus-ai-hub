@@ -1,0 +1,350 @@
+/* Tokens da marca Sensus AI — valores de 03_BRAND/BRAND_SYSTEM.md:4615-4635.
+   Deliberadamente com escopo à classe .sensus-brand, e não a :root, para que só os
+   ecrãs migrados mudem. Os restantes continuam nos tokens antigos do theme.css. */
+
+.sensus-brand {
+  --brand-bg: #080b16;
+  --brand-bg-secondary: #111d3b;
+  --brand-surface: #151b2c;
+  --brand-primary: #7c67ff;
+  --brand-secondary: #8ab8ff;
+  --brand-tertiary: #a6e8d9;
+  --brand-text: #f8f8fa;
+  --brand-text-muted: #c9ceda;
+
+  font-family: "PP Neue Montreal", system-ui, sans-serif;
+  color: var(--brand-text);
+}
+
+/* ── Controlos do editor de nodes (React Flow) ──
+   Os botões vêm com fundo branco e o ícone é um SVG preenchido a `currentColor`
+   herdado, o que no tema escuro dava botões brancos com ícone branco: invisíveis.
+   Aqui ficam escuros com o ícone claro. */
+.sensus-node-controls button {
+  background: #151b2c;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f8f8fa;
+  width: 26px;
+  height: 26px;
+}
+.sensus-node-controls button:hover {
+  background: #222b45;
+}
+.sensus-node-controls button svg {
+  fill: #f8f8fa;
+  max-width: 13px;
+  max-height: 13px;
+}
+.sensus-node-controls {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Painel de parâmetros do Ambiente Virtual ──
+   Escopo próprio (`.painel-sensus`) e não alterações aos componentes de `ui/`:
+   o Slider, o Input e os `select` servem também a Monitorização, o Assistente e
+   as Definições, e a régua de 16 px do Radix — que aqui fica grosseira ao lado
+   de texto de 11 px — é a que esses ecrãs esperam. */
+.painel-sensus [data-slot="slider-track"] {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.09);
+}
+.painel-sensus [data-slot="slider-range"] {
+  background: linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+}
+.painel-sensus [data-slot="slider-thumb"] {
+  width: 12px;
+  height: 12px;
+  background: var(--brand-text);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 3px rgba(124, 103, 255, 0.22), 0 1px 3px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 120ms ease;
+}
+.painel-sensus [data-slot="slider-thumb"]:hover,
+.painel-sensus [data-slot="slider-thumb"]:focus-visible {
+  box-shadow: 0 0 0 5px rgba(124, 103, 255, 0.34), 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Os `select` nativos apareciam com três fundos diferentes conforme o separador.
+   Uniformizados aqui, com a seta desenhada em vez da do sistema (que no Windows
+   vem cinzenta-clara e destoa do resto). */
+.painel-sensus select {
+  appearance: none;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background-color: rgba(255, 255, 255, 0.04);
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9ceda' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 9px center;
+  /* O `appearance: none` leva com ele o padding que o sistema dava ao select, e
+     aqui só se repunha o da direita (para a seta): o texto encostava à borda
+     esquerda, nos cinco selects do painel. 10 px alinha-o com o padding de
+     0,625rem do `Input` do resto da interface. */
+  padding-left: 10px;
+  padding-right: 26px;
+  color: var(--brand-text);
+  font-size: 11px;
+  transition: border-color 120ms ease, background-color 120ms ease;
+}
+.painel-sensus select:hover {
+  border-color: rgba(124, 103, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+.painel-sensus select:focus-visible {
+  outline: none;
+  border-color: var(--brand-primary);
+}
+.painel-sensus select option {
+  background: #0a0d1d;
+  padding: 4px 8px;
+}
+
+.painel-sensus input[data-slot="input"] {
+  height: 32px;
+  border-radius: 8px;
+  border-color: rgba(255, 255, 255, 0.09);
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.painel-sensus input[data-slot="input"]:hover:not(:disabled) {
+  border-color: rgba(124, 103, 255, 0.45);
+}
+
+/* A barra do sistema ocupa 17 px e vem cinzenta-clara: sobre o painel escuro era
+   a coisa mais visível dele. */
+.painel-sensus-scroll::-webkit-scrollbar {
+  width: 9px;
+}
+.painel-sensus-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.painel-sensus-scroll::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  background-clip: padding-box;
+}
+.painel-sensus-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.24);
+  background-clip: padding-box;
+}
+
+/* Os vistos ficavam cinzentos-do-sistema num separador e roxos no seguinte,
+   conforme quem escreveu o elemento se lembrou da classe do Tailwind. A cor
+   da marca passa a vir daqui, para todos. */
+.painel-sensus input[type="checkbox"] {
+  accent-color: var(--brand-primary);
+  cursor: pointer;
+}
+
+/* Grelha de campos dos separadores.
+   Antes cada bloco escolhia as suas colunas (`sm:grid-cols-2 xl:grid-cols-4`,
+   `md:grid-cols-5`, …) e num ecrã largo cada campo esticava-se a 370 px: o
+   rótulo encostado à esquerda e o valor à direita, com um palmo de nada pelo
+   meio. Aqui as colunas têm largura própria e é o número delas que muda com a
+   janela; o teto impede que uma linha de quatro campos atravesse um ecrã
+   ultralargo de ponta a ponta. */
+.painel-sensus-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 14px 24px;
+  max-width: 1240px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOVIMENTO — tokens e utilitários
+   Valores de 03_BRAND/BRAND_SYSTEM.md, secções 23 («Motion Design System»),
+   37 («Sistema de Motion, Luz e Som») e «Motion Tokens».
+
+   A regra do manual é uma só: **o movimento representa respiração.** Nunca
+   velocidade, nunca espetáculo, nunca distração — «se o utilizador reparar na
+   animação, ela é demasiado forte; a animação deve ser sentida, não observada».
+   Proibidos explicitamente: bounce, elastic, overshoot, animações explosivas e
+   zoom exagerado. Daí não haver aqui uma única curva que passe do destino.
+
+   Os tokens ficam em `:root` e não em `.sensus-brand` porque o movimento é o
+   mesmo em todos os ecrãs, migrados ou não — incluindo o de entrada.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Escala do manual, sem valores pelo meio. O que andava pela app (200, 500,
+     700, 1000 ms) era escolha de quem escreveu cada componente. */
+  --mov-rapido: 150ms;
+  --mov-normal: 300ms;
+  --mov-medio: 600ms;
+  --mov-lento: 1200ms;
+
+  /* Duas curvas, e só duas.
+     `respirar` é simétrica (in-out de seno): sobe e desce com a mesma
+     suavidade, que é o que faz uma respiração e não um estalo.
+     `resposta` desacelera até parar, para o que responde a um gesto — e não
+     passa do destino, porque overshoot está proibido. */
+  --mov-respirar: cubic-bezier(0.37, 0, 0.63, 1);
+  --mov-resposta: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Atraso base para escalonar uma entrada orquestrada (ver `.mov-hero`). */
+  --mov-atraso: 0ms;
+}
+
+/* ── Entradas ──
+   Fade + 8 px + 300 ms, literalmente o que o manual manda.
+   Usar **só** no que aparece por causa de uma ação (trocar de separador, abrir
+   uma secção, confirmar algo). Não no carregamento de cada cartão: uma página
+   onde tudo desliza ao entrar é exatamente o «espetáculo» que o manual recusa,
+   e deixa de se distinguir o que mudou daquilo que já lá estava. */
+@keyframes mov-entra {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes mov-entra-dir {
+  from { opacity: 0; transform: translateX(8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes mov-entra-esq {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.mov-entra {
+  animation: mov-entra var(--mov-normal) var(--mov-resposta) var(--mov-atraso) both;
+}
+
+/* Troca de separador no painel: o conteúdo entra do lado de onde vem — da
+   direita quando se avança na barra, da esquerda quando se recua. É um sinal de
+   direção, não uma transição de página, e por isso são os mesmos 8 px das
+   entradas (estava a 14 px e 240 ms, fora da escala). */
+.painel-sensus-entra-dir {
+  animation: mov-entra-dir var(--mov-normal) var(--mov-resposta);
+}
+.painel-sensus-entra-esq {
+  animation: mov-entra-esq var(--mov-normal) var(--mov-resposta);
+}
+
+/* ── Hero ──
+   Fade + scale 0,98 → 1 em 1200 ms. O manual reserva-o para o momento de
+   abertura, e na aplicação há um só: o ecrã de entrada. Um segundo hero no
+   mesmo percurso tira o valor ao primeiro.
+   O `--mov-atraso` permite escalonar os elementos dentro dessa abertura sem
+   inventar durações novas. */
+@keyframes mov-hero {
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.mov-hero {
+  animation: mov-hero var(--mov-duracao, var(--mov-lento)) var(--mov-resposta) var(--mov-atraso) both;
+}
+/* Dentro do hero, o que é texto não escala — só aparece, com o mesmo relógio.
+   Escalar um parágrafo a 0,98 borra-lhe as letras durante a animação. */
+.mov-hero-fade {
+  animation: mov-hero-fade var(--mov-duracao, var(--mov-lento)) var(--mov-resposta) var(--mov-atraso) both;
+}
+@keyframes mov-hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Respiração ──
+   Substitui o `animate-pulse` e o `animate-ping` do Tailwind, que a aplicação
+   tinha em treze sítios. O `pulse` varre a opacidade de 1 a 0,5 — lê-se como um
+   aviso a piscar — e o `ping` é um anel que duplica de escala e desaparece, que
+   é a definição de animação explosiva. Ambos contrariam o manual.
+   Aqui a amplitude é pequena (0,78 → 1) e o ciclo é o dobro do token lento.
+
+   2400 ms são 25 ciclos por minuto, mais rápido do que uma respiração em
+   repouso (12–16). É deliberado e é o único sítio onde me afasto da referência
+   natural: um indicador de "ao vivo" a 4800 ms lê-se como paragem. */
+@keyframes mov-respira {
+  0%, 100% { opacity: 0.78; }
+  50%      { opacity: 1; }
+}
+.mov-respira {
+  animation: mov-respira calc(var(--mov-lento) * 2) var(--mov-respirar) infinite;
+}
+
+/* ── Resposta ao gesto ──
+   Hover: opacidade 95% e escala 1,02, que é o teto que o manual fixa («nunca
+   superior»). O `active` desce a 0,99 para o clique ter chão — é compressão,
+   não recuo, por isso não conta como overshoot. */
+.mov-toque {
+  transition: opacity var(--mov-rapido) var(--mov-resposta),
+              transform var(--mov-rapido) var(--mov-resposta);
+}
+.mov-toque:hover {
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+.mov-toque:active {
+  transform: scale(0.99);
+}
+
+/* ── Abrir e fechar ──
+   `max-height` com a altura real do conteúdo, que quem usa a classe mede e
+   escreve no `style` (ver `SecaoColapsavel`). Um `max-height` inventado dá
+   saltos quando o conteúdo é maior do que o palpite, e a alternativa elegante
+   — interpolar `grid-template-rows` de 0fr a 1fr — **não interpola** numa
+   grelha de altura automática: medido, a altura ficou em 0 durante os 300 ms e
+   só apareceu no fim. Também não quero depender da versão do Chromium: o
+   pacote distribuído não corre necessariamente o mesmo que esta máquina.
+
+   O `visibility` com atraso igual à duração só esconde no fim, para o conteúdo
+   fechado sair do caminho do Tab e da árvore de acessibilidade sem desaparecer
+   antes de acabar de fechar. */
+.mov-abre {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height var(--mov-normal) var(--mov-resposta),
+              opacity var(--mov-normal) var(--mov-resposta),
+              visibility 0s linear var(--mov-normal);
+}
+.mov-abre[data-aberta="true"] {
+  opacity: 1;
+  visibility: visible;
+  transition: max-height var(--mov-normal) var(--mov-resposta),
+              opacity var(--mov-normal) var(--mov-resposta),
+              visibility 0s;
+}
+
+/* ── Valores ao vivo ──
+   A telemetria chega a cada frame e os medidores saltavam de valor. Interpolar
+   em 300 ms é o que transforma uma sucessão de leituras num movimento contínuo
+   — e é o que o manual pede quando diz que o sistema «responde em tempo real ao
+   comportamento humano». Só `transform`, `opacity` e `width`, que o compositor
+   trata sem voltar ao layout. */
+.mov-leitura {
+  transition: width var(--mov-normal) var(--mov-resposta),
+              height var(--mov-normal) var(--mov-resposta),
+              transform var(--mov-normal) var(--mov-resposta),
+              opacity var(--mov-normal) var(--mov-resposta);
+}
+
+/* ── Acessibilidade ──
+   Um só sítio a desligar tudo. Antes só as duas animações do painel respeitavam
+   esta preferência; as outras treze não sabiam dela.
+   Exceção deliberada: `animate-spin`. Um indicador de espera a rodar é a única
+   informação de que algo está a acontecer, e pará-lo é tirar conteúdo, não
+   movimento. */
+@media (prefers-reduced-motion: reduce) {
+  .mov-entra,
+  .mov-hero,
+  .mov-hero-fade,
+  .mov-respira,
+  .painel-sensus-entra-dir,
+  .painel-sensus-entra-esq,
+  [class*="animate-in"],
+  [class*="animate-out"] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .mov-toque,
+  .mov-abre,
+  .mov-leitura {
+    transition: none !important;
+  }
+  .mov-toque:hover {
+    opacity: 1;
+    transform: none;
+  }
+}

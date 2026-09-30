@@ -1,0 +1,56 @@
+{
+  "name": "sensus-hub",
+  "version": "1.0.0",
+  "description": "Sensus - Console de Monitorização",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . SensusHub --platform=win32 --arch=x64 --out=dist --overwrite --icon=icon.ico"
+  },
+  "build": {
+    "appId": "com.sensusai.hub",
+    "productName": "Sensus AI Hub",
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "../motor/rppg_env",
+        "to": "rppg_env",
+        "filter": [
+          "**/*",
+          "!**/__pycache__",
+          "!**/*.pyc"
+        ]
+      },
+      {
+        "from": "../motor/adb",
+        "to": "adb"
+      },
+      {
+        "from": "../motor/engine_sensus_unificado.py",
+        "to": "engine_sensus_unificado.py"
+      },
+      {
+        "from": "../motor/haarcascade_frontalface_default.xml",
+        "to": "haarcascade_frontalface_default.xml"
+      },
+      {
+        "from": "../motor/unsupervised_methods",
+        "to": "unsupervised_methods"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "requireAdministrator"
+    }
+  },
+  "keywords": [],
+  "author": "Sensus AI",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "electron-packager": "^17.1.2"
+  }
+}
